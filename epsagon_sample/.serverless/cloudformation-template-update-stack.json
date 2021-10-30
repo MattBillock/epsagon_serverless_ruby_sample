@@ -77,12 +77,6 @@
         "LogGroupName": "/aws/lambda/epsagon-sample-dev-calculator"
       }
     },
-    "HelloLogGroup": {
-      "Type": "AWS::Logs::LogGroup",
-      "Properties": {
-        "LogGroupName": "/aws/lambda/epsagon-sample-dev-hello"
-      }
-    },
     "IamRoleLambdaExecution": {
       "Type": "AWS::IAM::Role",
       "Properties": {
@@ -167,7 +161,7 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/epsagon-sample/dev/1635621110867-2021-10-30T19:11:50.867Z/epsagon-sample.zip"
+          "S3Key": "serverless/epsagon-sample/dev/1635623609851-2021-10-30T19:53:29.851Z/epsagon-sample.zip"
         },
         "Handler": "handler.calculator",
         "Runtime": "ruby2.7",
@@ -185,49 +179,14 @@
         "CalculatorLogGroup"
       ]
     },
-    "HelloLambdaFunction": {
-      "Type": "AWS::Lambda::Function",
-      "Properties": {
-        "Code": {
-          "S3Bucket": {
-            "Ref": "ServerlessDeploymentBucket"
-          },
-          "S3Key": "serverless/epsagon-sample/dev/1635621110867-2021-10-30T19:11:50.867Z/epsagon-sample.zip"
-        },
-        "Handler": "handler.hello",
-        "Runtime": "ruby2.7",
-        "FunctionName": "epsagon-sample-dev-hello",
-        "MemorySize": 1024,
-        "Timeout": 6,
-        "Role": {
-          "Fn::GetAtt": [
-            "IamRoleLambdaExecution",
-            "Arn"
-          ]
-        }
-      },
-      "DependsOn": [
-        "HelloLogGroup"
-      ]
-    },
-    "CalculatorLambdaVersionYZp42orDD4o1XLVIncJpgJ1HycnZy8Z5FTap7qs": {
+    "CalculatorLambdaVersionialLmcEAcRh3app2AjWzNb6reirGM4Mwvf9btrHGqxY": {
       "Type": "AWS::Lambda::Version",
       "DeletionPolicy": "Retain",
       "Properties": {
         "FunctionName": {
           "Ref": "CalculatorLambdaFunction"
         },
-        "CodeSha256": "C3tnhEx1V7DueokflaED8RgH1BRRrZ4BCHegx8t1FQQ="
-      }
-    },
-    "HelloLambdaVersioncJ1hX0yrpupSqvdEMYGVnrFgZI8s5vNa4L8xO82e0": {
-      "Type": "AWS::Lambda::Version",
-      "DeletionPolicy": "Retain",
-      "Properties": {
-        "FunctionName": {
-          "Ref": "HelloLambdaFunction"
-        },
-        "CodeSha256": "C3tnhEx1V7DueokflaED8RgH1BRRrZ4BCHegx8t1FQQ="
+        "CodeSha256": "OPeEmw6nRwmPVUaK84ayvGuwgKyXWe/erDTeVcgvwXM="
       }
     }
   },
@@ -243,19 +202,10 @@
     "CalculatorLambdaFunctionQualifiedArn": {
       "Description": "Current Lambda function version",
       "Value": {
-        "Ref": "CalculatorLambdaVersionYZp42orDD4o1XLVIncJpgJ1HycnZy8Z5FTap7qs"
+        "Ref": "CalculatorLambdaVersionialLmcEAcRh3app2AjWzNb6reirGM4Mwvf9btrHGqxY"
       },
       "Export": {
         "Name": "sls-epsagon-sample-dev-CalculatorLambdaFunctionQualifiedArn"
-      }
-    },
-    "HelloLambdaFunctionQualifiedArn": {
-      "Description": "Current Lambda function version",
-      "Value": {
-        "Ref": "HelloLambdaVersioncJ1hX0yrpupSqvdEMYGVnrFgZI8s5vNa4L8xO82e0"
-      },
-      "Export": {
-        "Name": "sls-epsagon-sample-dev-HelloLambdaFunctionQualifiedArn"
       }
     }
   }

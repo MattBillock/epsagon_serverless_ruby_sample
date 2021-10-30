@@ -1,31 +1,17 @@
 require 'json'
 
-def hello(event:, context:)
-  {
-    statusCode: 200,
-    body: {
-      message: 'Go Serverless v1.0! Your function executed successfully!',
-      input: event
-    }.to_json
-  }
-end
-
 def calculator(event:, context:)
   operator = event['operator']
-  success = false
-  result = 0
-  case operator
-  when 'add'
-    result = event['lhs']+event['rhs']
-    success = true
-  when 'subtract'
-    result = event['lhs']-event['rhs']
-    success = true
-  when 'multiply'
-    result = event['lhs']*event['rhs']
-    success = true
+  lhs = event['lhs']
+  rhs = event['rhs']
+
+  result = case operator
+    when 'add' then lhs+rhs
+    when 'subtract' then lhs-rhs
+    when 'multiply' then lhs*rhs
+    else 'INVALID'
   end
-  if(success)
+  if(result != 'INVALID')
     {
       statusCode: 200,
       body: {

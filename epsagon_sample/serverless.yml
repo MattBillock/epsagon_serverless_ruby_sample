@@ -58,6 +58,8 @@ provider:
 #    - include-me-dir/**
 
 functions:
+  calculator:
+    handler: handler.calculator
   hello:
     handler: handler.hello
 #    The following are a few example events you can configure
